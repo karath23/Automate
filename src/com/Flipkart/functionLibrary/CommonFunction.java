@@ -11,6 +11,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -145,6 +146,14 @@ public static void javaClick(WebElement element)
 	JavascriptExecutor js = (JavascriptExecutor) driver;
 	js.executeScript("element.click()");
 }
+
+/*public static void waitClick(String path)
+{
+By by = By.xpath(path);
+
+WebDriverWait wait = new WebDriverWait(driver, 10);
+WebElement el = wait.until(presenceOfElementLocated(by));
+}*/
 
 
 
