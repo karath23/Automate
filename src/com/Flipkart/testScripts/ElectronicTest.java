@@ -31,7 +31,9 @@ public class ElectronicTest {
 		FlipkartElectronicsPage p1=PageFactory.initElements(CommonFunction.driver,FlipkartElectronicsPage.class);
 	
 		p1.SelectElectronics();
-		System.out.println("error");
+		System.out.println("Links will be displayed");
+		p1.getLinks();
+		System.out.println("Links are getting displayed");
 	
 	}
 	
