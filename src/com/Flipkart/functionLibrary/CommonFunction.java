@@ -147,14 +147,6 @@ public static void javaClick(WebElement element)
 	js.executeScript("element.click()");
 }
 
-/*public static void waitClick(String path)
-{
-By by = By.xpath(path);
-
-WebDriverWait wait = new WebDriverWait(driver, 10);
-WebElement el = wait.until(presenceOfElementLocated(by));
-}*/
-
 
 
 public static int totalNoOfRows(String sheetName) throws IOException

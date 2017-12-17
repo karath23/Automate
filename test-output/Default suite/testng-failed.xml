@@ -3,6 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
+      <class name="com.Flipkart.testScripts.HomeTest">
+        <methods>
+          <include name="successfulLogin" invocation-numbers="0"/>
+          <include name="launchApp"/>
+        </methods>
+      </class> <!-- com.Flipkart.testScripts.HomeTest -->
       <class name="com.Flipkart.testScripts.ElectronicTest">
         <methods>
           <include name="quitApp"/>
