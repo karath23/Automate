@@ -3,7 +3,6 @@ package com.Flipkart.testScripts;
 import java.io.IOException;
 
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -17,19 +16,8 @@ public class HomeTest {
 	@BeforeMethod
 	public void launchApp() throws IOException
 	{
-	  CommonFunction.openBrowser();	
-	 /* CommonFunction.implicitWait(5);
-	  if(CommonFunction.alertExists==true)
-	  {
-	  CommonFunction.AlertDismiss();
-	  }*/
+	  CommonFunction.openBrowser();
 	}
-	
-	/*@AfterMethod
-	public void quitApp()
-	{
-		CommonFunction.closeBrowser();
-	}*/
 	 
 	@Test(dataProvider="getData",priority=1)
 	public void successfulLogin(String username,String pwd) throws InterruptedException

@@ -17,17 +17,21 @@ public class FlipkartElectronicsPage {
 	@FindBy(xpath="//a[@title='Mobiles']")
 	public WebElement mobileOption;
 	
+	@FindBy(xpath="//a[@title='Samsung']")
+	public WebElement samsung;
+	
 		
 	public void SelectElectronics() throws InterruptedException
 	{   		
+		System.out.println("In Electronic fn");
+		Thread.sleep(5000);
 		CommonFunction.waitUntilElementIsClickable(electronicOption,100);
 		CommonFunction.hover(electronicOption);
-		System.out.println("clicked");	
-		CommonFunction.waitUntilElementIsClickable(mobileOption,30);	
-		System.out.println("Option Clickable");
-		CommonFunction.click(mobileOption);
-		System.out.println("Mobile Option Clicked");
-		
+		System.out.println("Electronic Option Selected");
+		CommonFunction.waitUntilElementIsClickable(samsung,30);	
+		CommonFunction.click(samsung);
+		System.out.println("Samsung Option Clicked");
+		Thread.sleep(5000);
 	}
 	
 	public void getLinks() 
@@ -36,19 +40,17 @@ public class FlipkartElectronicsPage {
 		List<WebElement> links=CommonFunction.driver.findElements(By.tagName("a"));
 		
 		System.out.println("No of Links are "+links.size());
-		
-		for(WebElement ele : links)
-		{		
-			//print the links i.e. http://example.com or https://www.example.com
-			//System.out.println(ele.getAttribute("href"));
-			 
-			//print the links text
-			System.out.println(ele.getText());
 			
-		}
+		/*for(int i=1;i<=links.size();i++)
+		{		
+			System.out.println(i+". "+links.get(i).getText());
+		}*/
 		
-		
-		
+		for (WebElement myElement : links)
+		 {
+	         String link = myElement.getAttribute("title"); 
+	        System.out.println(link);; 
+		 }
 	}
 	
 }

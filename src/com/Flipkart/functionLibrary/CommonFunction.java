@@ -13,6 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -47,8 +48,16 @@ public static void openBrowser() throws IOException
 	if(browser.equalsIgnoreCase("chrome"))
 	{
 		System.setProperty("webdriver.chrome.driver",FilePaths.chromedriver);
+		
+		//ChromeOptions options = new ChromeOptions();
+		//options.addArguments("--start-maximized");
+		//Dimension d=new Dimension(1366, 768);
+		//driver.manage().window().setSize(d);
+		
+		
 		driver=new ChromeDriver();
 		//driver.manage().window().maximize();
+		//driver.manage().window().setSize(new Dimension(1024,768));
 		driver.manage().deleteAllCookies();
 		driver.get(url);
 	}
@@ -82,7 +91,12 @@ public static void closeBrowser()
 	driver.quit();
 }
 
-
+public static void navigateHome() throws IOException
+{
+	String url=propertyValue("url");
+	
+	driver.navigate().to(url);
+}
 
 public static void type(WebElement element,String value)
 {
@@ -147,7 +161,34 @@ public static void javaClick(WebElement element)
 	js.executeScript("element.click()");
 }
 
+public static void scrollAndClickElement(WebElement element) throws Exception
+{
+//final JavascriptExecutor jse=(JavascriptExecutor) driver;
+//jse.executeScript("arguments[0].scrollIntoView();",element);
+//jse.executeScript("arguments[0].click()",element);
+}
 
+public static void scrollToElement(WebElement element) {
+   if (driver instanceof JavascriptExecutor)
+   {
+        ((JavascriptExecutor) driver)
+            .executeScript("arguments[0].scrollIntoView(true);", element);
+       }
+	System.out.println("in scroll method");
+		
+}
+
+public static void waitAndClick(WebElement el) {
+    try {
+        WebDriverWait wait = new WebDriverWait(driver, 5, 200);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.className("loader")));
+        wait.until(ExpectedConditions.elementToBeClickable(el)).click();
+    }
+    catch (WebDriverException wde) {
+        scrollToElement(el);
+        el.click();
+    }
+}
 
 public static int totalNoOfRows(String sheetName) throws IOException
 {	
